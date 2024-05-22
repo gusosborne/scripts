@@ -13,12 +13,19 @@
 # - Copy this script to a file called leadcheck.sh in $DIRECTORY/leader
 # - Run the script: bash leadcheck.sh
 ####################### CONFIGURATION Section ###############################
+if [[ "$1" != @(current|next) ]]
+then
+echo ""
+echo "Argument (current OR next) is required.."
+echo ""
+exit 1
+fi
 # Update variables below as required:
 DIRECTORY=/home/cardano/cardano-my-node
 STAKE_POOL_ID=4dbdfb68de96a563719f7df2b3cf7c98fb547a3e7edca2a547d35852
 LOCALTZ=Asia/Singapore
 NETWORK=mainnet  # You can change this to "preview" or "preprod" also
-PERIOD=current   # Set PERIOD to "current", "next" or "previous" 
+PERIOD="$1"   # Set PERIOD to "current", "next" or "previous" 
                  # depending on what period you want to check leaderlogs
 #################### End of CONFIGURATION Section ###########################
 date
